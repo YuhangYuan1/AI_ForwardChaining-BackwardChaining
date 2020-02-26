@@ -44,13 +44,13 @@ Rule#   Rule
 60      if science = no && art = yes && communicate = yes && decisionMaking = no;
         then profession = COM;
 
-70      if science = no && art = yes && reading = yes, writing = yes;
+70      if science = no && art = yes && reading = yes && writing = yes;
         then profession = LBA;
 
-80      if science = no && art = yes && reading = yes, writing = no;
+80      if science = no && art = yes && reading = yes && writing = no;
         then profession = APA;
 
-90      if science = no && art = yes && reading = no, crafting = yes;
+90      if science = no && art = yes && reading = no && crafting = yes;
         then profession = FNA;
 
 100     if science = no && art = yes && grading = yes;

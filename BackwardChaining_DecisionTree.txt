@@ -1,20 +1,24 @@
- MED = "Medical",        //science = yes && experiment = no,
+EGR = "Engineering",    //science = yes && designing = yes,
 
-          HTC = "Health Care",    //science = yes && nursing = yes,
+SCI = "Science",        //science = yes && experiment = yes,
 
-          BUS = "Business",       //art = yes && communicate = yes && decisionMaking = yes,
+MED = "Medical",        //science = yes && experiment = no,
 
-          COM = "Communication",  //art = yes && communicate = yes && decisionMaking = no,
+HTC = "Health Care",    //science = yes && nursing = yes,
 
-          LBA = "Liberal Arts",   //art = yes && reading = yes, writing = yes,
+BUS = "Business",       //art = yes && communicate = yes && decisionMaking = yes,
+
+COM = "Communication",  //art = yes && communicate = yes && decisionMaking = no,
+
+LBA = "Liberal Arts",   //art = yes && reading = yes, writing = yes,
           
-          APA = "Applied Arts",   //art = yes && reading = yes, writing = no,
+APA = "Applied Arts",   //art = yes && reading = yes, writing = no,
 
-          FNA = "Fine Arts",      //art = yes && reading = no, crafting = yes,
+FNA = "Fine Arts",      //art = yes && reading = no, crafting = yes,
 
-          EDU = "Education",      //art = yes && grading = yes,
+EDU = "Education",      //art = yes && grading = yes,
 
-          UND = "Undecided";      //profession cannot be decided
+UND = "Undecided";      //profession cannot be decided
 
 Rule#   Rule
 

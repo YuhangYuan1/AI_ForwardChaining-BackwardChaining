@@ -7,8 +7,158 @@
 
 using namespace std;
 
+vector<string> variableGenerator(string tempstr)
+{
+   vector<string> conditionList;
+   vector<string> variableList;
+   size_t position = 0;
+   string target;
+
+   tempstr.erase(remove_if(tempstr.begin(), tempstr.end(), ::isspace),tempstr.end());
+
+   while((position = tempstr.find("AND")) != tempstr.npos)
+   {
+       target = tempstr.substr(0, position);
+       conditionList.push_back(target);
+       tempstr.erase(0, position + 3);
+   }
+
+   if((position = tempstr.find("THEN")) != tempstr.npos)
+   {
+       target = tempstr.substr(0, position);
+       conditionList.push_back(target);
+       tempstr.erase(0, position + 4);
+
+       conditionList.push_back(tempstr);
+   }
+
+   for(int i = 0; i < conditionList.size(); i++)
+   {
+       if((position = conditionList[i].find("=")) != conditionList[i].npos)
+       {
+           target = conditionList[i].substr(0, position);
+           variableList.push_back(target);
+           conditionList[i].erase(0, position + 1);
+
+           variableList.push_back(conditionList[i]);
+       }
+   }
+
+   return variableList;
+}
+
+string inferenceEngineBack(map<string, int> conlusionList, map<int, string> knowledgeBase)
+{
+    bool checkInput = false;
+    char pChoice;
+    string conclusion,
+           tempstr,
+           iChoice;
+    vector<string> variables;
+
+    /*** prompt interface 1 ***/
+    //prompt the conclusion first
+    while(!checkInput)
+    {
+        cout << "Please tell us which Profession you are interested in below:" << endl;
+        cout << "A. Engineering   (EGR)" << endl;
+        cout << "B. Science       (SCI)" << endl;
+        cout << "C. Medical       (MED)" << endl;
+        cout << "D. Health Care   (HTC)" << endl;
+        cout << "E. Business      (BUS)"<< endl;
+        cout << "F. Communication (COM)" << endl;
+        cout << "G. Liberal Arts  (LBA)" << endl;
+        cout << "H. Applied Arts  (APA)" << endl;
+        cout << "I. Fine Arts     (FNA)" << endl;
+        cout << "J. Education     (EDU)" << endl;
+        cin >> pChoice;
+
+        if(pChoice == 'a' || pChoice == 'A')
+        {
+            conclusion = "EGR";
+            checkInput = true;
+        }
+        else if(pChoice == 'b' || pChoice == 'B')
+        {
+            conclusion = "SCI";
+            checkInput = true;
+        }
+        else if(pChoice == 'c' || pChoice == 'C')
+        {
+            conclusion = "MED";
+            checkInput = true;
+        }
+        else if(pChoice == 'd' || pChoice == 'D')
+        {
+            conclusion = "HTC";
+            checkInput = true;
+        }
+        else if(pChoice == 'e' || pChoice == 'E')
+        {
+            conclusion = "BUS";
+            checkInput = true;
+        }
+        else if(pChoice == 'f' || pChoice == 'F')
+        {
+            conclusion = "COM";
+            checkInput = true;
+        }
+        else if(pChoice == 'g' || pChoice == 'G')
+        {
+            conclusion = "LBA";
+            checkInput = true;
+        }
+        else if(pChoice == 'h' || pChoice == 'H')
+        {
+            conclusion = "APA";
+            checkInput = true;
+        }
+        else if(pChoice == 'i' || pChoice == 'I')
+        {
+            conclusion = "FNA";
+            checkInput = true;
+        }
+        else if(pChoice == 'j' || pChoice == 'J')
+        {
+            conclusion = "EDU";
+            checkInput = true;
+        }
+        else
+            cout << "ERROR! Invalid input, Please choose again!" << endl;
+    }
+
+    tempstr = knowledgeBase[conlusionList[conclusion]];
+
+    variables = variableGenerator(tempstr);
+
+    for(int i = 0; i < (variables.size() - 2) ; i += 2)
+    {
+        cout << "Are you interested in " << variables[i] << "? (yes/no)" << endl;
+        cin >> iChoice;
+
+        if(iChoice != variables[i + 1])
+        {
+            cout << endl;
+            cout << conclusion << " is NOT the right Profession for you! Please choose another Profession!" << endl;
+            cout << "==========================================================================" << endl;
+            cout << "                    END of Backward Chaiing Process!" << endl;
+            cout << endl;
+            return "UND";
+        }
+    }
+
+    cout << endl;
+    cout << "Good News! " << conclusion << " is the Profession for you!" << endl;
+    cout << "=========================================" << endl;
+    cout << "    END of Backward Chaiing Process!" << endl;
+    cout << endl;
+
+    return conclusion;
+}
+
 string backwardChaining()
 {
+   vector<string> variableList;
    map <string, int> conclusionList;
    map <int, string> knowledgeBase;
 
@@ -48,15 +198,7 @@ string backwardChaining()
    /** Rule 10 **/
    knowledgeBase[100] = "science = no AND art = yes AND grading = yes THEN profession = EDU";
 
-   //clear the white space of the string
-   string tempstr = knowledgeBase[10];
-
-   tempstr.erase(remove_if(tempstr.begin(), tempstr.end(), ::isspace),tempstr.end());
-   cout << "this is the string got white space removed : " << tempstr << endl;
-
-   
-       
-   return "This is from the backwardChaining";
+   return inferenceEngineBack(conclusionList, knowledgeBase);
 }
 
 void forwardChaining(string profession)
@@ -64,6 +206,7 @@ void forwardChaining(string profession)
     cout << "fowardChaining!" << endl;
     cout << profession << endl;
 }
+
 int main()
 {
     string profession;
@@ -73,7 +216,7 @@ int main()
     /*** Main Menu Interface ***/
 
     cout << "***********************************************************************" << endl;
-    cout << "               ==Welcome to the Career Advising System!==" << endl;
+    cout << "               == Welcome to the Career Advising System! ==" << endl;
     cout << endl;
     cout << "Please Answer the following questions to help us determine your career." << endl;
     cout << "Please choose an option:" << endl;
@@ -89,7 +232,9 @@ int main()
 
        {
             profession = backwardChaining();
-            forwardChaining(profession);
+
+            if(profession != "UND")
+               forwardChaining(profession);
        }
 
        else if(choice == 'B' || choice == 'b')

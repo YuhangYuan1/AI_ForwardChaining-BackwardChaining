@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <map>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -156,7 +157,7 @@ string inferenceEngineBack(map<string, int> conlusionList, map<int, string> know
     return conclusion;
 }
 
-string backwardChaining()
+string Profession_BW()
 {
    vector<string> variableList;
    map <string, int> conclusionList;
@@ -201,7 +202,7 @@ string backwardChaining()
    return inferenceEngineBack(conclusionList, knowledgeBase);
 }
 
-void forwardChaining(string profession)
+void Area_FW(string profession)
 {
     string tempstr,
            target,
@@ -285,10 +286,10 @@ int main()
        if(choice == 'A' || choice == 'a')
 
        {
-            profession = backwardChaining();
+            profession = Profession_BW();
 
             if(profession != "UND")
-               forwardChaining(profession);
+               Area_FW(profession);
        }
 
        else if(choice == 'B' || choice == 'b')

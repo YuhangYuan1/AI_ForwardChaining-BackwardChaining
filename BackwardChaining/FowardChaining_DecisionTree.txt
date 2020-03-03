@@ -61,153 +61,172 @@ Rule#   Rule
 
 Forward Chaining:
 
-
+        EGR
+***************************************************************
 10      if EGR = yes && electronics = yes;
         then area = Electrical;
 
-20      if EGR = yes && machine = yes;
+20      if EGR = yes && electronics = no && machine = yes;
         then area = Mechanical;
 
-30      if EGR = yes && construction = yes;
+30      if EGR = yes && electronics = no && machine = no && construction = yes;
         then area = Civil;
 
-40      if EGR = yes && oil = yes;
+40      if EGR = yes && electronics = no && machine = no && construction = no && oil = yes;
         then area = Petroleum;
 
-50      if EGR = yes && chemistry = yes;
+50      if EGR = yes && electronics = no && machine = no && construction = no && oil = no && chemistry = yes;
         then area = Chemical;
 
-60      if MED = yes && humanMind = yes;
-        then area = MentalHealth;
-
-70      if MED = yes && cancerTreatment = yes;
-        then area = Oncologist;
-
-80      if MED = yes && heart = yes;
-        then area = Cardiologist;
-
-90      if MED = yes && musculoskeletalSystem = yes;
-        then area = Orthopedic;
-
-100     if MED = yes && generalCare = yes;
-        then area = GeneralPractitioner;
-
-110     if HTC = yes && caring = yes;
-        then area = Nursing;
-
-120     if HTC = yes && management = yes;
-        then area = HealthServiceManagement;
-
-130     if HTC = yes && admistration = yes;
-        then area = HeathCareAdministration;
-
-140     if HTC = yes && perscription = yes;
-        then area = PhyscianAssistant;
-
-150     if HTC = yes && publicProtection = yes;
-        then area = PublicHealth;
-        
-160     if SCI = yes && livingBeings = yes;
+        SCI
+***************************************************************
+60      if SCI = yes && livingBeings = yes;
         then area = Biology;
 
-170     if SCI = yes && physicalRules = yes;
+70      if SCI = yes && livingBeings =no && physicalRules = yes;
         then area = Physics;
 
-180     if SCI = yes && computers = yes;
+80      if SCI = yes && livingBeings =no && physicalRules = no && computers = yes;
         then area = ComputerScience;
 
-190     if SCI = yes && chemicalReactions = yes;
+90      if SCI = yes && livingBeings =no && physicalRules = no && computers = no && chemicalReactions = yes;
         then area = Chemistry;
 
-200     if SCI = yes && livestock = yes;
+100     if SCI = yes && livingBeings =no && physicalRules = no && computers = no && chemicalReactions = no && livestock = yes;
         then area = AnimalScience;
 
+        MED
+***************************************************************
+110     if MED = yes && humanMind = yes;
+        then area = MentalHealth;
+
+120     if MED = yes && humanMind = no && cancerTreatment = yes;
+        then area = Oncologist;
+
+130     if MED = yes && humanMind = no && cancerTreatment = no && heart = yes;
+        then area = Cardiologist;
+
+140     if MED = yes && humanMind = no && cancerTreatment = no && heart = no && musculoskeletalSystem = yes;
+        then area = Orthopedic;
+
+150     if MED = yes && humanMind = no && cancerTreatment = no && heart = no && musculoskeletalSystem = no && generalCare = yes;
+        then area = GeneralPractitioner;
+
+        HTC
+***************************************************************
+160     if HTC = yes && caring = yes;
+        then area = Nursing;
+
+170     if HTC = yes && caring = no && management = yes;
+        then area = HealthServiceManagement;
+
+180     if HTC = yes && caring = no && management = no && admistration = yes;
+        then area = HeathCareAdministration;
+
+190     if HTC = yes && caring = no && management = no && admistration = no && perscription = yes;
+        then area = PhyscianAssistant;
+
+200     if HTC = yes && caring = no && management = no && admistration = no && perscription = no && publicProtection = yes;
+        then area = PublicHealth;
+
+        BUS
+***************************************************************
 210     if BUS = yes && decisionMaking = yes;
         then area = BusinessManagement;
 
-220     if BUS = yes && planning = yes;
+220     if BUS = yes && decisionMaking = no && planning = yes;
         then area = Marketing;
 
-230     if BUS = yes && promoting = yes;
+230     if BUS = yes && decisionMaking = no && planning = no && promoting = yes;
         then area = Advertisement;
 
-240     if BUS = yes && bargaining = yes;
+240     if BUS = yes && decisionMaking = no && planning = no && promoting = no && bargaining = yes;
         then area = Trading;
 
-250     if BUS = yes && investment = yes;
+250     if BUS = yes && decisionMaking = no && planning = no && promoting = no && bargaining = no && investment = yes;
         then area = Entrepreneurship;
 
-260     if APA = yes && pictures = yes;
-        then area = Photography;
+        COM
+***************************************************************
+260     if COM = yes && investigation = yes;
+        then area = Journalism;
 
-270     if APA = yes && creating = yes;
-        then area = Design;
+270     if COM = yes && investigation = no && language = yes;
+        then area = Linguistics;
 
-280     if APA = yes && painting = yes;
-        then area = VisualCommunication;
+280     if COM = yes && investigation = no && language = no && politition = yes;
+        then area = PoliticalScience;
 
-290     if APA = yes && graphics = yes;
-        then area = Media;
+290     if COM = yes && investigation = no && language = no && politition = no && presentation = yes;
+        then area = Speech;
 
-300     if APA = yes && trending = yes;
-        then area = Fashion;
+300     if COM = yes && investigation = no && language = no && politition = no && presentation = no && styling = yes;
+        then area = Editing;
 
+        LBA
+***************************************************************
 310     if LBA = yes && statistics = yes;
         then area = Anthropology;
 
-320     if LBA = yes && space = yes;
+320     if LBA = yes && statistics = no && space = yes;
         then area = Astronomy;
 
-330     if LBA = yes && worldCulture = yes;
+330     if LBA = yes && statistics = no && space = no && worldCulture = yes;
         then area = WorldLiterature;
 
-340     if LBA = yes && reading = yes;
+340     if LBA = yes && statistics = no && space = no && worldCulture = no && reading = yes;
         then area = Literature;
 
-350     if LBA = yes && religion = yes;
+350     if LBA = yes && statistics = no && space = no && worldCulture = no && reading = no && religion = yes;
         then area = Theology;
 
-360     if FNA = yes && history = yes;
+        APA
+***************************************************************
+360     if APA = yes && pictures = yes;
+        then area = Photography;
+
+370     if APA = yes && pictures = no && creating = yes;
+        then area = Design;
+
+380     if APA = yes && pictures = no && creating = no && painting = yes;
+        then area = VisualCommunication;
+
+390     if APA = yes && pictures = no && creating = no && painting = no && graphics = yes;
+        then area = Media;
+
+400     if APA = yes && pictures = no && creating = no && painting = no && graphics = no && trending = yes;
+        then area = Fashion;
+
+        FNA
+***************************************************************
+410     if FNA = yes && history = yes;
         then area = ArtHistory;
 
-370     if FNA = yes && sculpture = yes;
+420     if FNA = yes && history = no && sculpture = yes;
         then area = Sculpting;
 
-380     if FNA = yes && drawing = yes;
+430     if FNA = yes && history = no && sculpture = no && drawing = yes;
         then area = Painting;
 
-390     if FNA = yes && melody = yes;
+440     if FNA = yes && history = no && sculpture = no && drawing = no && melody = yes;
         then area = Music;
 
-400     if FNA = yes && performence = yes;
+450     if FNA = yes && history = no && sculpture = no && drawing = no && melody = no && performence = yes;
         then area = Dance;
 
-410     if COM = yes && investigation = yes;
-        then area = Journalism;
-
-420     if COM = yes && language = yes;
-        then area = Linguistics;
-
-430     if COM = yes && politition = yes;
-        then area = PoliticalScience;
-
-440     if COM = yes && presentation = yes;
-        then area = Speech;
-
-450     if COM = yes && styling = yes;
-        then area = Editing;
-
+        EDU
+***************************************************************
 460     if EDU = yes && elementarySchool = yes;
         then area = EarlyChildHood;
 
-470     if EDU = yes && gymnasium = yes;
+470     if EDU = yes && elementarySchool = no && gymnasium = yes;
         then area = PhysicalEducation;
 
-480     if EDU = yes && collegeStudent = yes;
+480     if EDU = yes && elementarySchool = no && gymnasium = no && collegeStudent = yes;
         then area = SecondaryEducation;
 
-490     if EDU = yes && disabilityStudent = yes;
+490     if EDU = yes && elementarySchool = no && gymnasium = no && collegeStudent = no && disabilityStudent = yes;
         then area = SpecialEducation;
 
-500     if EDU = yes && serviceProviding = yes;
+500     if EDU = yes && elementarySchool = no && gymnasium = no && collegeStudent = no && disabilityStudent = no && serviceProviding = yes;
         then area = Conseling;

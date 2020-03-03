@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <map>
 #include <string>
-#include <queue>
 
 using namespace std;
 
@@ -218,7 +217,7 @@ void forwardChaining(string profession)
     knowledgeBase["MED"] = "humanMind, MentalHealth, cancerTreatment, Oncologist, heart, Cardiologist, musculoskeletalSystem, Orthopedic, generalCare, GeneralPractitioner";
     knowledgeBase["HTC"] = "caring, Nursing, management, HealthServiceManagement, admistration, HeathCareAdministration, perscription, PhyscianAssistant, publicProtection, PublicHealth";
     knowledgeBase["BUS"] = "decisionMaking, BusinessManagement, planning, Marketing, promoting, Advertisement, bargaining, Trading, investment, Entrepreneurship,";
-    knowledgeBase["COM"] = "investigation, Journalism, language, Linguistics, politition, PoliticalScience, presentation, Speech, styling, Editing";
+    knowledgeBase["COM"] = "investigation, Journalism, language, Linguistics, politics, PoliticalScience, presentation, Speech, styling, Editing";
     knowledgeBase["LBA"] = "statistics, Anthropology, space, Astronomy, worldCulture, WorldLiterature, reading, Literature, religon, Theology";
     knowledgeBase["APA"] = "pictures, Photography, creating, Design, painting, VisualCommunication, graphics, Media, trending, Fashion";
     knowledgeBase["FNA"] = "history, ArtHistory, sculpture, Sculpting, drawing, Painting, melody, Music, performance, Dance";

@@ -18,4 +18,11 @@ ELECTRONIC SUBMISSION: Upload source code file (.cpp) as well as other files nee
 
 Login to TRACS Access CS 5346 sec. #1 Fall 2018, then follow the following steps:
 
-• In the left Tool list of the site, click [Assignments]. • Click the assignment's title. • Add an attachment(s) to the assignment. • To add an attachment, click [Browse]. Locate your attachment and click [Open]. If you would like to add multiple attachments, click [Browse] and browse for your file. • If you need to remove an attachment, click [Remove]. • The attachment(s) will be listed in the order they were entered. • You may also click [Preview] to view your submission. • Click [Submit] when you are done.
+• In the left Tool list of the site, click [Assignments].
+• Click the assignment's title.
+• Add an attachment(s) to the assignment.
+• To add an attachment, click [Browse]. Locate your attachment and click [Open]. If you would like to add multiple attachments, click [Browse] and browse for your file.
+• If you need to remove an attachment, click [Remove].
+• The attachment(s) will be listed in the order they were entered.
+• You may also click [Preview] to view your submission.
+• Click [Submit] when you are done.
